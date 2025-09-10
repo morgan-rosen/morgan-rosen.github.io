@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Design System</title>
+
+  <style>
+    /* ================================
+       DESIGN TOKENS
+    ================================= */
+    :root {
+      /* Color Palette */
+      --outer-space: #484a47;
+      --paynes-gray: #5c6d70;
+      --old-rose: #a37774;
+      --salmon: #e88873;
+      --melon: #e0ac9d;
+
+      /* Font */
+      --font-family: "savate", sans-serif;
+
+      /* Spacing */
+      --space-1: 24px;
+      --space-2: 48px;
+      --space-3: 72px;
+      --space-4: 96px;
+      --space-5: 120px;
+    }
+
+    /* ================================
+       BASE STYLES
+    ================================= */
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background: var(--melon);
+      color: var(--outer-space);
+      line-height: 1.5;
+    }
+
+    header {
+      background: var(--outer-space);
+      color: white;
+      padding: 24px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    section {
+      margin-bottom: 32px;
+      padding: 24px;
+      border-radius: 8px;
+      background: white;
+    }
+
+    h1, h2, h3 { margin-top: 0; }
+    h1 { font-size: 2rem; color: var(--salmon); }
+    h2 { font-size: 1.5rem; color: var(--old-rose); }
+    h3 { font-size: 1.25rem; color: var(--paynes-gray); }
+
+    /* ================================
+       COLOR PALETTE (Swatches)
+    ================================= */
+    .swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .swatch {
+      flex: 0 0 150px; /* fixed square */
+      width: 150px;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .swatch.light { color: var(--outer-space); }
+
+    /* ================================
+       SPACING SYSTEM
+    ================================= */
+    .spacing-demo {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .space-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .s1 { background: var(--paynes-gray); width: var(--space-1); height: var(--space-1); }
+    .s2 { background: var(--old-rose);    width: var(--space-2); height: var(--space-2); }
+    .s3 { background: var(--salmon);      width: var(--space-3); height: var(--space-3); }
+    .s4 { background: var(--outer-space); width: var(--space-4); height: var(--space-4); }
+    .s5 { background: var(--melon);       width: var(--space-5); height: var(--space-5); color: var(--outer-space); }
+
+    /* ================================
+       COMPONENTS (Buttons / Forms)
+    ================================= */
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+    .btn-primary { background: var(--outer-space); color: white; }
+    .btn-secondary { background: var(--salmon); color: white; }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      margin: 4px 0 12px;
+      border: 1px solid var(--paynes-gray);
+      border-radius: 6px;
+      font-family: var(--font-family);
+    }
+
+    /* ================================
+       RESPONSIVE LAYOUT
+    ================================= */
+    @media (max-width: 600px) {
+      .swatches { flex-direction: column; }
+      .spacing-demo { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ================================
+       HEADER
+  ================================= -->
+  <header>
+    <h1>My Design System</h1>
+  </header>
+
+  <main>
+    <!-- ================================
+         COLOR PALETTE
+    ================================= -->
+    <section>
+      <h2>Color Palette</h2>
+      <div class="swatches">
+        <div class="swatch" style="background: var(--outer-space)">Outer Space<br>#484a47</div>
+        <div class="swatch" style="background: var(--paynes-gray)">Paynes Gray<br>#5c6d70</div>
+        <div class="swatch" style="background: var(--old-rose)">Old Rose<br>#a37774</div>
+        <div class="swatch" style="background: var(--salmon)">Salmon<br>#e88873</div>
+        <div class="swatch light" style="background: var(--melon)">Melon<br>#e0ac9d</div>
+      </div>
+    </section>
+
+    <!-- ================================
+         TYPOGRAPHY
+    ================================= -->
+    <section>
+      <h2>Typography</h2>
+      <h1>Heading 1 Example</h1>
+      <h2>Heading 2 Example</h2>
+      <h3>Heading 3 Example</h3>
+      <p>Body text example.</p>
+      <small>Small text example — captions or helper text.</small>
+    </section>
+
+    <!-- ================================
+         SPACING
+    ================================= -->
+    <section>
+      <h2>Spacing System</h2>
+      <div class="spacing-demo">
+        <div class="space-box s1">24px</div>
+        <div class="space-box s2">48px</div>
+        <div class="space-box s3">72px</div>
+        <div class="space-box s4">96px</div>
+        <div class="space-box s5">120px</div>
+      </div>
+    </section>
+
+    <!-- ================================
+         COMPONENTS
+    ================================= -->
+    <section>
+      <h2>Components</h2>
+      <button class="btn btn-primary">Example Button</button>
+      <button class="btn btn-secondary">Example Button</button>
+      <p><a href="#" style="color: var(--salmon); font-weight: bold;">Example Link</a></p>
+
+      <form>
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Your name" />
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="youremail@example.com" />
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </section>
+
+    <!-- ================================
+         REFLECTION
+    ================================= -->
+    <section>
+      <h2>Reflection</h2>
+      <p>
+        Building my design system has been kind of fun and kind of tricky at the same time. 
+        I went with a warm, muted palette with deep gray-green and rose tones as the foundation. 
+        To me, these colors feel grounded but still expressive — kind of like how I want my designs 
+        (and maybe myself) to feel. Then I added salmon and melon tones to bring in a bit of personality 
+        without making things feel too busy or bright. It’s like a little pop of fun in a calm, balanced space.
+      </p>
+      <p>
+        Accessibility was a big part of how I used the colors. I wanted to make sure everything was readable, 
+        so I spent time checking contrast ratios against WCAG guidelines. Darker colors like Outer Space and 
+        Paynes Gray became my go-to for body text, while lighter ones like Melon got reserved mostly for 
+        backgrounds or large text accents. It was a bit of a balancing act — I wanted the system to feel 
+        expressive and “me,” but it also had to be functional for anyone using it. 
+      </p>
+      <p>
+        Working on this also made me realize how powerful a small set of design tokens can be. 
+        Colors, type, spacing — they might seem simple, but having clear rules for them instantly 
+        makes a system feel cohesive. I stuck to a typography scale (H1–H3, body, small) and consistent 
+        spacing values, which honestly saved me a lot of headaches. Now everything feels like it belongs 
+        together, which is exactly what I wanted for my portfolio. I can see these elements carrying across 
+        different pages and giving my work a consistent, recognizable style.  
+      </p>
+      <p>
+        In the future, I’d love to expand the palette a bit — maybe add some extra neutrals or a bold accent 
+        color to shake things up. The spacing and typography are flexible enough to handle new ideas, 
+        but the color palette really sets the mood, so I want to be thoughtful about it. Overall, 
+        I’m really happy with the foundation I’ve built. It’s accessible, authentic, and just feels like me. 
+        I feel like I finally have a system I can rely on for consistent, polished design work, 
+        but one that still leaves room for personality. 
+      </p>
+    </section>
+  </main>
+</body>
+</html>
