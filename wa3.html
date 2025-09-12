@@ -114,7 +114,31 @@
     }
   </style>
 </head>
+<a href="Peer review.pdf" class="peer-review-button">PEER REVIEW</a>
 
+<style>
+  .peer-review-button {
+    position: fixed;
+    bottom: 20px;   
+    left: 50%;     
+    transform: translateX(-50%);
+    padding: 16px 32px; 
+    background-color: var(--old-rose); 
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .peer-review-button:hover {
+    background-color: var(--salmon); 
+    transform: translateX(-50%) scale(1.05);
+  }
+</style>
 <body>
   <!-- HEADER -->
   <header>
@@ -146,7 +170,7 @@
       <li><a href="goals.html">Goals</a></li>
       <li><a href="contacts.html">Contact</a></li>
       <li><a href="wa3.html">Home</a></li>
-    </ul>
+    <ul>
   </nav>
 </section>
   </main>
