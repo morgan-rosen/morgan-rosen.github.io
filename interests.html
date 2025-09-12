@@ -1,23 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Morgan Rosen</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Morgan Rosen</title>
+
+  <!-- Adobe Font -->
+  <link rel="stylesheet" href="https://use.typekit.net/fpt4pez.css">
+
+  <style>
+    /* DESIGN SYSTEM VARIABLES */
+    :root {
+      /* Colors */
+      --outer-space: #484a47;
+      --paynes-gray: #5c6d70;
+      --old-rose: #a37774;
+      --salmon: #e88873;
+      --melon: #e0ac9d;
+
+      /* Font */
+      --font-family: "savate", sans-serif;
+      --paragraph-font: "seismic-latin-variable", sans-serif;
+
+      /* Spacing scale */
+      --space-1: 24px;
+      --space-2: 48px;
+      --space-3: 72px;
+      --space-4: 96px;
+      --space-5: 120px;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background: var(--salmon);
+      color: var(--outer-space);
+      line-height: 1.5;
+    }
+
+    p {
+      font-family: var(--paragraph-font);
+      font-variation-settings: 'wght' 400; 
+      color:white
+    }
+
+    h1, h2, h3, h4 {
+      margin-top: 0;
+    }
+
+    h1 { font-size: 2rem; color: var(--salmon); }
+    h2 { font-size: 1.5rem; color: var(--old-rose); }
+    h3 { font-size: 1.25rem; color: var(--paynes-gray); }
+    h4 { font-size: 1.1rem; color: var(--outer-space); }
+
+    img {
+      display: block;
+      margin: var(--space-1) auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /*LAYOUT */
+    header {
+      background: var(--outer-space);
+      color: white;
+      padding: var(--space-1);
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: var(--space-1);
+    }
+
+    section {
+      margin-bottom: var(--space-2);
+      padding: var(--space-1);
+      border-radius: 8px;
+      background: var(--melon);
+    }
+
+    /* NAVIGATION */
+    nav {
+      margin-bottom: var(--space-2);
+      padding: var(--space-1);
+      border-radius: 8px;
+      background: var(--melon);
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: var(--space-1);
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: bold;
+      color: white; 
+      background: var(--paynes-gray); 
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background 0.3s;
+      display: inline-block;
+    }
+
+    nav a:hover {
+     background: var(--outer-space); 
+     color: white;
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Morgan Rosen</h1>
-    </header>
+  <!-- HEADER -->
+  <header>
+    <h1>Morgan Rosen | Portfolio</h1>
+  </header>
+
   <main>
-        <section>
-<h2>Interests</h2>
-    <p>I’m passionate about understanding the brain and exploring why people think and behave the way they do. I also have a deep love for all things art—creating, designing, and finding new ways to bring ideas to life.</p>
- <nav>
-            <ul>
-                <li><a href="interests.html">Interests</a></li>
-                <li><a href="goals.html">Goals</a></li>
-                <li><a href="contacts.html">Contact</a></li>
-                <li><a href="wa3.html">HOME</a></li>
-            </ul>
-        </nav>
+    <!-- INTERESTS SECTION -->
+    <section>
+      <h2>Interests</h2>
+      <p>I’m passionate about understanding the brain and exploring why people think and behave the way they do. I also have a deep love for all things art—creating, designing, and finding new ways to bring ideas to life.</p>
+    </section>
+
+    <!-- NAVIGATION -->
+    <nav>
+      <ul>
+        <li><a href="interests.html">Interests</a></li>
+        <li><a href="goals.html">Goals</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+        <li><a href="wa3.html">Home</a></li>
+      </ul>
+    </nav>
+  </main>
+</body>
+</html>
