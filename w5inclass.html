@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Card</title>
+  <style>
+    .card {
+      width: 320px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem auto;
+      font-family: sans-serif;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .expand-btn {
+      width: 32px;
+      height: 32px;
+      border: none;
+      border-radius: 50%;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .expand-btn:hover,
+    .expand-btn:focus {
+      background-color: #45a049;
+      outline: none;
+    }
+
+    .card-content .details {
+      margin-top: 0.5rem;
+      transition: max-height 0.3s ease;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Reflection button styling */
+    .reflection-btn {
+      display: block;
+      width: 220px;
+      margin: 1rem auto;
+      padding: 0.6rem 1rem;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-align: center;
+      transition: background-color 0.2s ease;
+      text-decoration: none;
+    }
+
+    .reflection-btn:hover,
+    .reflection-btn:focus {
+      background-color: #0056b3;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">
+      <h3>Community Garden Project</h3>
+      <button class="expand-btn" aria-label="Expand card" aria-expanded="false">+</button>
+    </div>
+    <div class="card-content">
+      <p class="summary">Join neighbors in creating a shared growing space...</p>
+      <div class="details hidden">
+        <p>Meeting every Saturday at 10am. Tools provided. All skill levels welcome.</p>
+        <p>Contact: garden@community.org</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post-Activity Reflection Button -->
+  <a href="reflectionwa5inclass.pdf" target="_blank" class="reflection-btn">Post-Activity Reflection</a>
+
+  <script>
+    const expandBtn = document.querySelector('.expand-btn');
+    const details = document.querySelector('.details');
+
+    expandBtn.addEventListener('click', () => {
+      const isHidden = details.classList.contains('hidden');
+      details.classList.toggle('hidden');
+
+      if (isHidden) {
+        expandBtn.textContent = '-';
+        expandBtn.setAttribute('aria-label', 'Collapse card');
+        expandBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        expandBtn.textContent = '+';
+        expandBtn.setAttribute('aria-label', 'Expand card');
+        expandBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
