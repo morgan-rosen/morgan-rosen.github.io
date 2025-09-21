@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Inclusive Acres Hub</title>
+  <style>
+    /* Base Styles & Navigation same as previous pages */
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    main { padding: 2rem; }
+    .btn { display: inline-block; padding: 0.5rem 1rem; background-color: #3A7D44; color: white; text-decoration: none; border-radius: 4px; margin-top: 1rem; }
+
+    .main-nav { display: flex; justify-content: space-between; align-items: center; background-color: #3A7D44; padding: 0.5rem 1rem; color: white; position: relative; z-index: 1000; }
+    .nav-brand { font-weight: bold; font-size: 1.2rem; }
+    .nav-menu { display: flex; list-style: none; gap: 1rem; }
+    .nav-menu li a { color: white; text-decoration: none; padding: 0.5rem; }
+    .nav-menu li a:hover, .nav-menu li a:focus { background-color: #2E5F35; border-radius: 4px; }
+
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 25px; height: 3px; background-color: white; transition: 0.3s; }
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    @media (max-width: 768px) {
+      .nav-menu { display: flex; flex-direction: column; gap: 0; position: absolute; top: 60px; left: 0; right: 0; background-color: #3A7D44; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; }
+      .nav-menu.show { max-height: 500px; opacity: 1; }
+      .nav-toggle { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="main-nav">
+    <div class="nav-brand">Inclusive Acres Hub</div>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="wa5_home.html">Home</a></li>
+      <li><a href="wa5_resources.html">Resources</a></li>
+      <li><a href="wa5_events.html">Events</a></li>
+      <li><a href="wa5_contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Contact Inclusive Acres</h1>
+    <p>If you have questions, want to volunteer, or need more information:</p>
+    <ul>
+      <li>Email: <a href="mailto:info@inclusiveacres.org">info@inclusiveacres.org</a></li>
+      <li>Phone: (303) 555-1234</li>
+      <li>Address: 123 Inclusive Farm Lane, Longmont, CO</li>
+    </ul>
+    <p>Follow us on <a href="#">Facebook</a> for updates and community stories.</p>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    function toggleMenu() { navMenu.classList.toggle('show'); navToggle.classList.toggle('active'); const expanded = navToggle.getAttribute('aria-expanded') === 'true'; navToggle.setAttribute('aria-expanded', !expanded); }
+    navToggle.addEventListener('click', toggleMenu);
+    navToggle.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMenu(); } });
+    document.addEventListener('click', (e) => { if(!navMenu.contains(e.target) && !navToggle.contains(e.target) && navMenu.classList.contains('show')){ navMenu.classList.remove('show'); navToggle.classList.remove('active'); navToggle.setAttribute('aria-expanded', 'false'); } });
+  </script>
+</body>
+</html>
