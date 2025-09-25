@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources - Inclusive Acres Hub</title>
+<style>
+/* Reset and Base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; }
+a { color: inherit; text-decoration: none; }
+
+/* Grid Layout */
+.grid-container { display: grid; grid-template-areas: "nav" "main" "footer"; grid-template-rows: auto 1fr auto; min-height: 100vh; }
+
+/* Navigation - same as Home page */
+nav { grid-area: nav; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3A7D44;
+  padding: 0 1.5rem;
+  color: white;
+  position: relative;
+  z-index: 1000;
+  border-radius: 0 0 10px 10px;
+  min-height: 70px;
+  height: 70px;
+}
+.nav-brand { font-weight: bold; font-size: 1.4rem; line-height: 70px; }
+.nav-menu { display: flex; list-style: none; gap: 1rem; height: 100%; align-items: center; }
+.nav-menu li a { color: white; padding: 0.5rem 0.75rem; border-radius: 5px; transition: background 0.3s; }
+.nav-menu li a:hover, .nav-menu li a:focus { background-color: #2E5F35; }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-toggle span { display: block; width: 25px; height: 3px; background-color: white; transition: 0.3s; }
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+@media (max-width:768px) {
+  .nav-menu {
+    flex-direction: column;
+    position:absolute;
+    top:70px; /* match fixed header height */
+    left:0;
+    right:0;
+    background-color:#3A7D44;
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transition:max-height 0.3s ease, opacity 0.3s ease;
+  }
+  .nav-menu.show { max-height:500px; opacity:1; }
+  .nav-toggle { display:flex; }
+}
+
+/* Main content */
+main { grid-area: main; padding: 3rem 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
+main h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #2F4F4F; }
+.filter-section { margin-bottom: 1rem; }
+label { font-weight:bold; }
+select { margin-left:0.5rem; padding:0.3rem; }
+.resource-grid { display: grid; gap: 2rem; margin-top: 1rem; grid-template-columns: 1fr; }
+.resource-section { background:#f9f9f9; padding:1rem; border-radius:6px; }
+@media (min-width:768px) { .resource-grid { grid-template-columns: repeat(2,1fr); } }
+
+/* Buttons */
+.btn { display:inline-block; padding:0.7rem 1.5rem; background-color:#3A7D44; color:white; border-radius:8px; margin-top:1rem; font-weight:500; transition: background 0.3s, transform 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+.btn:hover, .btn:focus { background-color:#2E5F35; transform: translateY(-2px); }
+
+/* Footer */
+footer { grid-area: footer; text-align: center; padding: 2rem; background-color: #e8f5e9; border-top: 1px solid #ccc; }
+footer .btn { box-shadow: none; }
+</style>
+</head>
+<body>
+<div class="grid-container">
+<nav class="main-nav" role="navigation" aria-label="Main site navigation">
+  <div class="nav-brand">Inclusive Acres Hub</div>
+  <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-menu">
+    <li><a href="wa5_home.html">Home</a></li>
+    <li><a href="wa5_resources.html">Resources</a></li>
+    <li><a href="wa5_events.html">Events</a></li>
+    <li><a href="wa5_contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h1>Resources for Families & Volunteers</h1>
+  <div class="filter-section" aria-label="Filter resources by category">
+    <label for="resourceFilter">Filter by:</label>
+    <select id="resourceFilter">
+      <option value="all">Show All</option>
+      <option value="events">Event Info</option>
+      <option value="guidelines">Guidelines</option>
+      <option value="accommodations">Accommodations</option>
+      <option value="portal">Portal</option>
+    </select>
+  </div>
+  <div class="resource-grid">
+    <section class="resource-section" data-category="events">
+      <h2>Event Calendars & Sign-Ups</h2>
+      <p>Stay up to date with all Inclusive Acres events, including weekly Open Farm Days, workshops, and seasonal activities.</p>
+    </section>
+    <section class="resource-section" data-category="guidelines">
+      <h2>Activity Guidelines</h2>
+      <p>Details for neurodivergent youth ages 5–18, including preparation and expectations.</p>
+    </section>
+    <section class="resource-section" data-category="accommodations">
+      <h2>Accommodations & Support</h2>
+      <p>Information on sensory accommodations, volunteer support, and accessibility measures.</p>
+    </section>
+    <section class="resource-section" data-category="portal">
+      <h2>Family & Volunteer Portal</h2>
+      <p>Track activities, manage volunteer shifts, and communicate with staff through our portal.</p>
+    </section>
+  </div>
+  <a href="wa5_events.html" class="btn">View Upcoming Events</a>
+</main>
+
+<footer>
+  <a href="Week_6_Reflection.pdf" target="_blank" class="btn">Community Impact Documentation</a>
+</footer>
+</div>
+
+<script>
+// Navigation toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+navToggle.addEventListener('click', ()=>{navMenu.classList.toggle('show'); navToggle.classList.toggle('active'); const expanded = navToggle.getAttribute('aria-expanded')==='true'; navToggle.setAttribute('aria-expanded',!expanded);});
+navToggle.addEventListener('keydown', e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault(); navMenu.classList.toggle('show'); navToggle.classList.toggle('active'); const expanded = navToggle.getAttribute('aria-expanded')==='true'; navToggle.setAttribute('aria-expanded',!expanded);}});
+document.addEventListener('click', e=>{if(!navMenu.contains(e.target)&&!navToggle.contains(e.target)&&navMenu.classList.contains('show')){navMenu.classList.remove('show'); navToggle.classList.remove('active'); navToggle.setAttribute('aria-expanded','false');}});
+
+// Resource filter
+const filterSelect=document.getElementById('resourceFilter');
+const sections=document.querySelectorAll('.resource-section');
+filterSelect.addEventListener('change',()=>{const value=filterSelect.value; sections.forEach(section=>{const category=section.getAttribute('data-category'); section.style.display=(value==='all'||value===category)?'':'none';});});
+</script>
+</body>
+</html>

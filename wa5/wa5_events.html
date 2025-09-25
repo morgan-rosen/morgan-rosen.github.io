@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Events - Inclusive Acres Hub</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #fafafa; color: #333; }
+
+/* Layout Grid */
+.grid-container {
+  display: grid;
+  grid-template-areas: "nav" "main" "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+nav { grid-area: nav; }
+main { grid-area: main; padding: 2rem; max-width: 900px; margin: 0 auto; }
+footer { grid-area: footer; text-align: center; padding: 2rem; background-color: #f2f2f2; }
+
+/* Headers */
+h1 { color: #2E5F35; margin-bottom: 1.5rem; text-align: center; }
+h2 { color: #3A7D44; margin-bottom: 0.5rem; }
+p { margin-bottom: 0.75rem; }
+
+/* Content links (blue & underlined) */
+main a { color: #007BFF; text-decoration: underline; }
+main a:hover, main a:focus { text-decoration: underline; }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #3A7D44;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-top: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.btn:hover { background-color: #2E5F35; }
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3A7D44;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  position: relative;
+  z-index: 1000;
+}
+.nav-brand { font-weight: bold; font-size: 1.4rem; letter-spacing: 1px; }
+.nav-menu { display: flex; list-style: none; gap: 1rem; }
+.nav-menu li a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.nav-menu li a:hover, .nav-menu li a:focus { background-color: #2E5F35; }
+
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-toggle span { display: block; width: 25px; height: 3px; background-color: white; transition: 0.3s; }
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+@media (max-width: 768px) {
+  .nav-menu {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #3A7D44;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+  }
+  .nav-menu.show { max-height: 700px; opacity: 1; }
+  .nav-toggle { display: flex; }
+}
+
+/* Event Cards */
+section {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+section:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+section p strong { color: #2E5F35; }
+</style>
+</head>
+<body>
+<div class="grid-container">
+  <nav class="main-nav" role="navigation" aria-label="Main site navigation">
+    <div class="nav-brand">Inclusive Acres Hub</div>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="wa5_home.html">Home</a></li>
+      <li><a href="wa5_resources.html">Resources</a></li>
+      <li><a href="wa5_events.html">Events</a></li>
+      <li><a href="wa5_contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main role="main">
+    <h1>Upcoming Events</h1>
+
+    <section aria-labelledby="event1">
+      <h2 id="event1">Open Farm Day – Saturday, Sept 28</h2>
+      <p><strong>Time:</strong> 10:00 AM – 2:00 PM</p>
+      <p><strong>Age Range:</strong> 5–18 years</p>
+      <p>Join us for a full day at the farm! Kids can interact with animals, explore gardens, and participate in fun outdoor activities. Families are encouraged to bring water, snacks, and comfortable clothing for outdoor play.</p>
+    </section>
+
+    <section aria-labelledby="event2">
+      <h2 id="event2">Animal Care Workshop – Saturday, Oct 5</h2>
+      <p><strong>Time:</strong> 11:00 AM – 1:00 PM</p>
+      <p><strong>Age Range:</strong> 7–18 years</p>
+      <p>This workshop teaches kids basic animal care skills, including feeding, grooming, and understanding animal behavior. Participants will gain hands-on experience in a safe and supportive environment.</p>
+    </section>
+
+    <section aria-labelledby="event3">
+      <h2 id="event3">Sensory-Friendly Harvest Event – Saturday, Oct 12</h2>
+      <p><strong>Time:</strong> 10:00 AM – 3:00 PM</p>
+      <p><strong>Age Range:</strong> 5–18 years</p>
+      <p>This special event is designed to be sensory-friendly, with quieter spaces and accommodations for children who may be sensitive to noise or crowds. Activities include pumpkin picking, crafts, and harvest-themed fun.</p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <a href="Week_6_Reflection.pdf" target="_blank" class="btn">Community Impact Documentation    </a>
+  </footer>
+</div>
+
+<script>
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+function toggleMenu() {
+  navMenu.classList.toggle('show');
+  navToggle.classList.toggle('active');
+  const expanded = navToggle.getAttribute('aria-expanded')==='true';
+  navToggle.setAttribute('aria-expanded', !expanded);
+}
+navToggle.addEventListener('click', toggleMenu);
+navToggle.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleMenu(); } });
+document.addEventListener('click', e => { if(!navMenu.contains(e.target)&&!navToggle.contains(e.target)&&navMenu.classList.contains('show')){
+  navMenu.classList.remove('show'); navToggle.classList.remove('active'); navToggle.setAttribute('aria-expanded','false');}});
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Inclusive Acres Hub</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #fafafa; color: #333; }
+
+/* Layout Grid */
+.grid-container { display: grid; grid-template-areas: "nav" "main" "footer"; grid-template-rows: auto 1fr auto; min-height: 100vh; }
+nav { grid-area: nav; }
+main { grid-area: main; padding: 2rem; max-width: 700px; margin: 0 auto; }
+
+/* Headers */
+h1 { color: #2E5F35; margin-bottom: 1rem; text-align: center; }
+h2 { color: #3A7D44; margin-top: 2rem; }
+
+/* Navigation links */
+.main-nav { display: flex; justify-content: space-between; align-items: center; background-color: #3A7D44; padding: 0.75rem 1.5rem; color: white; position: relative; z-index: 1000; }
+.nav-brand { font-weight: bold; font-size: 1.4rem; }
+.nav-menu { display: flex; list-style: none; gap: 1rem; }
+.nav-menu li a { color: white; text-decoration: none; padding: 0.5rem 0.75rem; border-radius: 4px; }
+.nav-menu li a:hover, .nav-menu li a:focus { background-color: #2E5F35; }
+
+/* Nav toggle */
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-toggle span { display: block; width: 25px; height: 3px; background-color: white; transition: 0.3s; }
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+@media(max-width:768px){
+  .nav-menu { flex-direction: column; position:absolute; top:60px; left:0; right:0; background-color:#3A7D44; max-height:0; opacity:0; overflow:hidden; transition:max-height 0.3s ease, opacity 0.3s ease;}
+  .nav-menu.show { max-height:700px; opacity:1; }
+  .nav-toggle { display:flex; }
+}
+
+/* Content links blue & underlined */
+main a { color: #007BFF; text-decoration: underline; }
+main a:hover, main a:focus { text-decoration: underline; }
+
+/* Buttons */
+.btn { display: inline-block; padding: 0.75rem 1.5rem; background-color: #3A7D44; color: white; text-decoration: none; border-radius: 6px; margin-top: 1rem; font-weight: bold; }
+.btn:hover { background-color: #2E5F35; }
+
+/* Contact Form */
+form { margin-top: 2rem; padding: 1.5rem; background-color: #fff; border: 1px solid #ddd; border-radius: 8px; }
+form label { display: block; margin-top: 1rem; font-weight: bold; }
+form input, form textarea { width: 100%; padding: 0.5rem; margin-top: 0.25rem; border: 1px solid #ccc; border-radius: 4px; }
+form button { margin-top: 1rem; background-color: #3A7D44; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: bold; }
+form button:hover { background-color: #2E5F35; }
+#successMsg { margin-top: 1rem; color: green; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="grid-container">
+  <nav class="main-nav">
+    <div class="nav-brand">Inclusive Acres Hub</div>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="wa5_home.html">Home</a></li>
+      <li><a href="wa5_resources.html">Resources</a></li>
+      <li><a href="wa5_events.html">Events</a></li>
+      <li><a href="wa5_contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Contact Inclusive Acres</h1>
+    <p>Email: <a href="mailto:inclusiveacres@gmail.com">inclusiveacres@gmail.com</a></p>
+    <p>Phone: (303) 678-6555</p>
+    <p>Address: 600 Kimbark, Longmont, CO 80501</p>
+    <p>Follow us on <a href="https://www.facebook.com/p/Inclusive-Acres-61550869738900/">Facebook</a> for updates and community stories.</p>
+
+    <h2>Send us a Message</h2>
+    <form id="contactForm" aria-describedby="successMsg">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+    <p id="successMsg" aria-live="polite"></p>
+  </main>
+
+  <footer>
+    <a href="Week_6_Reflection.pdf" target="_blank" class="btn">Community Impact Documentation</a>
+  </footer>
+</div>
+
+<script>
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+function toggleMenu() { 
+  navMenu.classList.toggle('show'); 
+  navToggle.classList.toggle('active'); 
+  const expanded = navToggle.getAttribute('aria-expanded') === 'true'; 
+  navToggle.setAttribute('aria-expanded', !expanded); 
+}
+navToggle.addEventListener('click', toggleMenu);
+navToggle.addEventListener('keydown', e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault(); toggleMenu();}});
+document.addEventListener('click', e=>{if(!navMenu.contains(e.target)&&!navToggle.contains(e.target)&&navMenu.classList.contains('show')){
+  navMenu.classList.remove('show'); navToggle.classList.remove('active'); navToggle.setAttribute('aria-expanded','false');}});
+
+// Contact form functionality
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  document.getElementById("successMsg").textContent = "✅ Thank you! Your message has been sent successfully.";
+  this.reset();
+});
+</script>
+</body>
+</html>
