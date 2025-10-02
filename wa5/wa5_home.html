@@ -4,7 +4,224 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home - Inclusive Acres Hub</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Reset & Base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Grid Layout */
+    .grid-container {
+      display: grid;
+      grid-template-areas: "nav" "toggle" "main" "footer";
+      grid-template-rows: auto auto 1fr auto;
+      min-height: 100vh;
+    }
+
+    /* Navigation */
+    nav { grid-area: nav; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .main-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      background-color: #3A7D44;
+      padding: 0.75rem 1.5rem;
+      color: white;
+      border-radius: 0 0 10px 10px;
+      position: relative;
+      z-index: 1000;
+    }
+    .nav-brand { font-weight: bold; font-size: 1.4rem; transition: color 0.3s; }
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+    }
+    .nav-menu li a {
+      color: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .nav-menu li a:hover, .nav-menu li a:focus {
+      background-color: #2E5F35;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      transition: 0.3s;
+    }
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Theme toggle buttons */
+    .theme-toggle {
+      display: flex;
+      gap: 0.5rem;
+      margin: 0.5rem 1.5rem;
+      align-items: center;
+    }
+    .theme-toggle button {
+      padding: 0.3rem 0.75rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #3A7D44;
+      color: white;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.3s;
+      font-size: 0.9rem;
+    }
+    .theme-toggle button:hover { background-color: #2E5F35; }
+
+    /* Main content */
+    main {
+      grid-area: main;
+      padding: 3rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    main h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #2F4F4F;
+      transition: color 0.3s;
+    }
+    main p {
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    main ul {
+      margin: 1rem 0 2rem;
+      padding-left: 1.5rem;
+      text-align: left;
+      max-width: 400px;
+    }
+    main ul li {
+      margin-bottom: 0.75rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+    main ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #3A7D44;
+      font-weight: bold;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background-color: #3A7D44;
+      color: white;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    .btn:hover, .btn:focus { background-color: #2E5F35; transform: translateY(-2px); }
+
+    /* Reflection button */
+    .reflection-btn {
+      background-color: #ff69b4 !important;
+      color: white !important;
+    }
+    .reflection-btn:hover, .reflection-btn:focus {
+      background-color: #e0559e !important;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      grid-area: footer;
+      text-align: center;
+      padding: 2rem;
+      background-color: #f2f2f2;
+      transition: background-color 0.3s;
+    }
+    footer p { margin-top: 1rem; font-size: 0.9rem; }
+
+    /* Dark mode */
+    body.dark-mode {
+      background-color: #1f1f1f;
+      color: #eee;
+    }
+    body.dark-mode nav,
+    body.dark-mode .nav-menu,
+    body.dark-mode footer { background-color: #2b2b2b !important; }
+    body.dark-mode main h1 { color: #a8d5a3; }
+    body.dark-mode .nav-brand { color: #a8d5a3; }
+
+    /* Ensure reflection button stays pink in dark mode */
+    body.dark-mode .reflection-btn {
+      background-color: #ff69b4 !important;
+      color: white !important;
+    }
+    body.dark-mode .reflection-btn:hover,
+    body.dark-mode .reflection-btn:focus {
+      background-color: #e0559e !important;
+    }
+
+    /* Responsive breakpoints */
+    @media (max-width: 768px) {
+      .nav-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #3A7D44;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+      }
+      .nav-menu.show { max-height: 500px; opacity: 1; }
+      .nav-toggle { display: flex; }
+    }
+    @media (max-width: 500px) {
+      main h1 { font-size: 1.8rem; }
+      main p { font-size: 1rem; }
+    }
+    @media (min-width: 1024px) {
+      main { flex-direction: row; text-align: left; gap: 2rem; }
+      main ul { max-width: none; }
+    }
+
+    /* Container query */
+    @container (min-width: 400px) {
+      .btn { font-size: 1.1rem; padding: 1rem 2rem; }
+    }
+  </style>
 </head>
 <body>
   <div class="grid-container">
@@ -21,22 +238,72 @@
       </ul>
     </nav>
 
+    <div class="theme-toggle" role="region" aria-label="Theme toggle buttons">
+      <button onclick="setLightMode()" aria-label="Switch to light mode">🌞 Light</button>
+      <button onclick="setDarkMode()" aria-label="Switch to dark mode">🌙 Dark</button>
+      <button onclick="clearData()" aria-label="Clear all saved preferences">🗑️ Clear My Data</button>
+    </div>
+
     <main>
-      <h1>Welcome to Inclusive Acres</h1>
-      <p>Inclusive Acres provides neurodivergent youth with a safe and fun environment to play, explore, and interact with animals while building confidence and friendships.</p>
-      <ul>
-        <li>Open Farm Days every Saturday</li>
-        <li>Workshops and animal care activities</li>
-        <li>Community volunteer programs</li>
-      </ul>
-      <a href="wa5_events.html" class="btn">See Upcoming Events</a>
+      <div>
+        <h1>Welcome to Inclusive Acres</h1>
+        <p>Inclusive Acres provides neurodivergent youth with a safe and fun environment to play, explore, and interact with animals while building confidence and friendships.</p>
+        <ul>
+          <li>Open Farm Days with friendly animals</li>
+          <li>Inclusive nature trails and sensory gardens</li>
+          <li>Workshops and seasonal events for all abilities</li>
+        </ul>
+        <a href="wa5_events.html" class="btn">Explore Upcoming Events</a>
+      </div>
     </main>
 
-    <footer>
-      <a href="Week_6_Reflection.pdf" target="_blank" class="btn">Community Impact Documentation</a>
+    <footer role="contentinfo">
+      <a href="Wa7_Data_Integration_Reflection.pdf" target="_blank" class="btn reflection-btn">REFLECTION</a>
+      <p><strong>Privacy Statement:</strong>  
+        We collect only minimal data (theme preference) to improve your browsing experience. Data is stored in your browser's localStorage for 7 days and can be cleared anytime with the "Clear My Data" button. No information is sent to external servers. You are always in control of your data.
+      </p>
     </footer>
   </div>
 
-  <script src="js/scripts.js"></script>
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+      navToggle.classList.toggle('active');
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !expanded);
+    });
+
+    // Theme persistence with expiration
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      const expiry = localStorage.getItem('expiry');
+      const now = Date.now();
+
+      if (expiry && now > parseInt(expiry)) {
+        localStorage.clear(); // expired
+      } else if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    });
+
+    function setLightMode() {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+      localStorage.setItem('expiry', Date.now() + 7 * 24 * 60 * 60 * 1000);
+    }
+    function setDarkMode() {
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+      localStorage.setItem('expiry', Date.now() + 7 * 24 * 60 * 60 * 1000);
+    }
+    function clearData() {
+      localStorage.clear();
+      alert("Your data has been cleared.");
+      document.body.classList.remove('dark-mode');
+    }
+  </script>
 </body>
 </html>

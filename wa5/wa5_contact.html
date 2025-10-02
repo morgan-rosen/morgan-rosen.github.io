@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Contact - Inclusive Acres Hub</title>
 <style>
+/* Reset & Base */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #fafafa; color: #333; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #fafafa; color: #333; transition: background-color 0.3s, color 0.3s; }
 
-/* Layout Grid */
-.grid-container { display: grid; grid-template-areas: "nav" "main" "footer"; grid-template-rows: auto 1fr auto; min-height: 100vh; }
+body.dark-mode { background-color: #1f1f1f; color: #eee; }
+body.dark-mode nav.main-nav { background-color: #2b2b2b !important; }
+body.dark-mode .nav-menu li a { color: #a8d5a3; }
+body.dark-mode .nav-menu li a:hover, body.dark-mode .nav-menu li a:focus { background-color: #3A7D44; }
+body.dark-mode .nav-brand { color: #a8d5a3; }
+body.dark-mode main { background-color: #2b2b2b; color: #ccc; }
+body.dark-mode main a { color: #90caf9; }
+body.dark-mode form { background-color: #3a3a3a; border-color: #555; }
+body.dark-mode form input, body.dark-mode form textarea { background-color: #555; border-color: #777; color: #eee; }
+body.dark-mode form button { background-color: #3A7D44; color: white; }
+body.dark-mode form button:hover { background-color: #2E5F35; transform: translateY(-2px); }
+body.dark-mode footer { background-color: #222; border-top: 1px solid #555; }
+body.dark-mode .btn { color: white; }
+body.dark-mode .btn:hover { transform: translateY(-2px); }
+
+/* Grid Layout */
+.grid-container { display: grid; grid-template-areas: "nav" "toggle" "main" "footer"; grid-template-columns: 1fr; grid-template-rows: auto auto 1fr auto; min-height: 100vh; }
 nav { grid-area: nav; }
-main { grid-area: main; padding: 2rem; max-width: 700px; margin: 0 auto; }
+main { grid-area: main; padding: 3rem 1.5rem; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+footer { grid-area: footer; text-align: center; padding: 2rem; background-color: #f2f2f2; transition: background-color 0.3s; }
 
-/* Headers */
-h1 { color: #2E5F35; margin-bottom: 1rem; text-align: center; }
-h2 { color: #3A7D44; margin-top: 2rem; }
+/* Headings */
+h1 { color: #2E5F35; margin-bottom: 1rem; text-align: center; transition: color 0.3s; }
+body.dark-mode h1 { color: #a8d5a3; }
+h2 { color: #3A7D44; margin-top: 2rem; transition: color 0.3s; }
+body.dark-mode h2 { color: #a8d5a3; }
 
-/* Navigation links */
-.main-nav { display: flex; justify-content: space-between; align-items: center; background-color: #3A7D44; padding: 0.75rem 1.5rem; color: white; position: relative; z-index: 1000; }
+/* Navigation */
+.main-nav { display: flex; justify-content: space-between; align-items: center; background-color: #3A7D44; padding: 0.75rem 1.5rem; color: white; position: relative; z-index: 1000; border-radius: 0 0 10px 10px; }
 .nav-brand { font-weight: bold; font-size: 1.4rem; }
 .nav-menu { display: flex; list-style: none; gap: 1rem; }
 .nav-menu li a { color: white; text-decoration: none; padding: 0.5rem 0.75rem; border-radius: 4px; }
 .nav-menu li a:hover, .nav-menu li a:focus { background-color: #2E5F35; }
-
-/* Nav toggle */
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.5rem; }
 .nav-toggle span { display: block; width: 25px; height: 3px; background-color: white; transition: 0.3s; }
 .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
@@ -32,36 +49,42 @@ h2 { color: #3A7D44; margin-top: 2rem; }
 .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
 @media(max-width:768px){
-  .nav-menu { flex-direction: column; position:absolute; top:60px; left:0; right:0; background-color:#3A7D44; max-height:0; opacity:0; overflow:hidden; transition:max-height 0.3s ease, opacity 0.3s ease;}
+  .nav-menu { flex-direction: column; position:absolute; top:70px; left:0; right:0; background-color:#3A7D44; max-height:0; opacity:0; overflow:hidden; transition:max-height 0.3s ease, opacity 0.3s ease;}
   .nav-menu.show { max-height:700px; opacity:1; }
   .nav-toggle { display:flex; }
 }
 
-/* Content links blue & underlined */
-main a { color: #007BFF; text-decoration: underline; }
+/* Links & Buttons */
+main a { color: #007BFF; text-decoration: underline; transition: color 0.3s; }
 main a:hover, main a:focus { text-decoration: underline; }
 
-/* Buttons */
-.btn { display: inline-block; padding: 0.75rem 1.5rem; background-color: #3A7D44; color: white; text-decoration: none; border-radius: 6px; margin-top: 1rem; font-weight: bold; }
-.btn:hover { background-color: #2E5F35; }
+.btn { display: inline-block; padding: 0.7rem 1.5rem; background-color: #3A7D44; color: white; text-decoration: none; border-radius: 8px; margin-top: 1rem; font-weight: 500; transition: background 0.3s, transform 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+.btn:hover, .btn:focus { background-color: #2E5F35; transform: translateY(-2px); }
 
-/* Contact Form */
-form { margin-top: 2rem; padding: 1.5rem; background-color: #fff; border: 1px solid #ddd; border-radius: 8px; }
+/* Pink Reflection Button */
+.reflection-btn { background-color: #ff69b4 !important; color: white !important; }
+.reflection-btn:hover, .reflection-btn:focus { background-color: #e0559e !important; transform: translateY(-2px); }
+
+/* Form */
+form { margin-top: 2rem; padding: 1.5rem; background-color: #fff; border: 1px solid #ddd; border-radius: 8px; transition: background-color 0.3s, border-color 0.3s; width: 100%; max-width: 600px; }
 form label { display: block; margin-top: 1rem; font-weight: bold; }
-form input, form textarea { width: 100%; padding: 0.5rem; margin-top: 0.25rem; border: 1px solid #ccc; border-radius: 4px; }
-form button { margin-top: 1rem; background-color: #3A7D44; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: bold; }
-form button:hover { background-color: #2E5F35; }
+form input, form textarea { width: 100%; padding: 0.5rem; margin-top: 0.25rem; border: 1px solid #ccc; border-radius: 4px; transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
+form button { margin-top: 1rem; background-color: #3A7D44; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: 500; transition: background 0.3s, transform 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+form button:hover, form button:focus { background-color: #2E5F35; transform: translateY(-2px); }
 #successMsg { margin-top: 1rem; color: green; font-weight: bold; }
+
+/* Theme Toggle */
+.theme-toggle { grid-area: toggle; display: flex; justify-content: flex-start; gap: 1rem; padding: 0.5rem 1.5rem; }
+.theme-toggle button { background-color: #3A7D44; border: none; color: white; padding: 0.4rem 0.9rem; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; transition: background-color 0.3s; }
+.theme-toggle button:hover, .theme-toggle button:focus { background-color: #2E5F35; }
 </style>
 </head>
 <body>
 
 <div class="grid-container">
-  <nav class="main-nav">
+  <nav class="main-nav" role="navigation" aria-label="Main site navigation">
     <div class="nav-brand">Inclusive Acres Hub</div>
-    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="nav-menu">
       <li><a href="wa5_home.html">Home</a></li>
       <li><a href="wa5_resources.html">Resources</a></li>
@@ -70,54 +93,80 @@ form button:hover { background-color: #2E5F35; }
     </ul>
   </nav>
 
+  <div class="theme-toggle" role="region" aria-label="Theme toggle buttons">
+    <button onclick="setLightMode()" aria-label="Switch to light mode">🌞 Light Mode</button>
+    <button onclick="setDarkMode()" aria-label="Switch to dark mode">🌙 Dark Mode</button>
+    <button onclick="clearData()" aria-label="Clear all saved preferences">🗑️ Clear My Data</button>
+  </div>
+
   <main>
     <h1>Contact Inclusive Acres</h1>
     <p>Email: <a href="mailto:inclusiveacres@gmail.com">inclusiveacres@gmail.com</a></p>
     <p>Phone: (303) 678-6555</p>
     <p>Address: 600 Kimbark, Longmont, CO 80501</p>
-    <p>Follow us on <a href="https://www.facebook.com/p/Inclusive-Acres-61550869738900/">Facebook</a> for updates and community stories.</p>
+    <p>Follow us on <a href="https://www.facebook.com/p/Inclusive-Acres-61550869738900/">Facebook</a></p>
 
     <h2>Send us a Message</h2>
     <form id="contactForm" aria-describedby="successMsg">
       <label for="name">Your Name:</label>
-      <input type="text" id="name" name="name" required>
-
+      <input type="text" id="name" name="name" required />
       <label for="email">Your Email:</label>
-      <input type="email" id="email" name="email" required>
-
+      <input type="email" id="email" name="email" required />
       <label for="message">Message:</label>
       <textarea id="message" name="message" rows="5" required></textarea>
-
       <button type="submit">Submit</button>
     </form>
     <p id="successMsg" aria-live="polite"></p>
   </main>
 
-  <footer>
-    <a href="Week_6_Reflection.pdf" target="_blank" class="btn">Community Impact Documentation</a>
+  <footer role="contentinfo">
+    <a href="Wa7_Data_Integration_Reflection.pdf" target="_blank" class="btn reflection-btn">REFLECTION</a>
+    <p><strong>Privacy Statement:</strong> We collect only minimal data (theme preference) to improve your browsing experience. Data is stored in your browser's localStorage for 7 days and can be cleared anytime with the "Clear My Data" button. No information is sent to external servers. You are always in control of your data.</p>
   </footer>
 </div>
 
 <script>
+// NAV TOGGLE
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 function toggleMenu() { 
   navMenu.classList.toggle('show'); 
   navToggle.classList.toggle('active'); 
-  const expanded = navToggle.getAttribute('aria-expanded') === 'true'; 
-  navToggle.setAttribute('aria-expanded', !expanded); 
+  navToggle.setAttribute('aria-expanded', navToggle.getAttribute('aria-expanded')==='true'?'false':'true'); 
 }
 navToggle.addEventListener('click', toggleMenu);
-navToggle.addEventListener('keydown', e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault(); toggleMenu();}});
-document.addEventListener('click', e=>{if(!navMenu.contains(e.target)&&!navToggle.contains(e.target)&&navMenu.classList.contains('show')){
-  navMenu.classList.remove('show'); navToggle.classList.remove('active'); navToggle.setAttribute('aria-expanded','false');}});
+navToggle.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') { e.preventDefault(); toggleMenu(); } });
+document.addEventListener('click', e => { if(!navMenu.contains(e.target)&&!navToggle.contains(e.target)&&navMenu.classList.contains('show')){ navMenu.classList.remove('show'); navToggle.classList.remove('active'); navToggle.setAttribute('aria-expanded','false'); } });
 
-// Contact form functionality
-document.getElementById("contactForm").addEventListener("submit", function(event) {
+// FORM SUBMISSION
+document.getElementById("contactForm").addEventListener("submit", function(event){
   event.preventDefault();
   document.getElementById("successMsg").textContent = "✅ Thank you! Your message has been sent successfully.";
   this.reset();
 });
+
+// THEME PERSISTENCE
+function setLightMode() {
+  document.body.classList.remove('dark-mode');
+  localStorage.setItem('theme','light');
+  localStorage.setItem('themeExpiry', Date.now() + 7*24*60*60*1000);
+}
+function setDarkMode() {
+  document.body.classList.add('dark-mode');
+  localStorage.setItem('theme','dark');
+  localStorage.setItem('themeExpiry', Date.now() + 7*24*60*60*1000);
+}
+function clearData() {
+  localStorage.clear();
+  document.body.classList.remove('dark-mode');
+  alert("Your data has been cleared.");
+}
+(function(){
+  const savedTheme = localStorage.getItem('theme');
+  const expiry = localStorage.getItem('themeExpiry');
+  if(expiry && Date.now() > parseInt(expiry)){ clearData(); }
+  else if(savedTheme==='dark'){ document.body.classList.add('dark-mode'); }
+})();
 </script>
 </body>
 </html>

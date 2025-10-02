@@ -6,63 +6,20 @@
 <title>Events - Inclusive Acres Hub</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #fafafa; color: #333; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #fafafa; color: #333; transition: background-color 0.3s, color 0.3s; }
+body.dark-mode { background-color: #1f1f1f; color: #eee; }
 
-/* Layout Grid */
-.grid-container {
-  display: grid;
-  grid-template-areas: "nav" "main" "footer";
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
-}
+.grid-container { display: grid; grid-template-areas: "nav" "toggle" "main" "footer"; grid-template-columns: 1fr; grid-template-rows: auto auto 1fr auto; min-height: 100vh; }
+
 nav { grid-area: nav; }
+footer { grid-area: footer; text-align: center; padding: 2rem; background-color: #f2f2f2; transition: background-color 0.3s; }
+body.dark-mode footer { background-color: #222; }
 main { grid-area: main; padding: 2rem; max-width: 900px; margin: 0 auto; }
-footer { grid-area: footer; text-align: center; padding: 2rem; background-color: #f2f2f2; }
 
-/* Headers */
-h1 { color: #2E5F35; margin-bottom: 1.5rem; text-align: center; }
-h2 { color: #3A7D44; margin-bottom: 0.5rem; }
-p { margin-bottom: 0.75rem; }
-
-/* Content links (blue & underlined) */
-main a { color: #007BFF; text-decoration: underline; }
-main a:hover, main a:focus { text-decoration: underline; }
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: #3A7D44;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  margin-top: 1rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-.btn:hover { background-color: #2E5F35; }
-
-/* Navigation */
-.main-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #3A7D44;
-  padding: 0.75rem 1.5rem;
-  color: white;
-  position: relative;
-  z-index: 1000;
-}
-.nav-brand { font-weight: bold; font-size: 1.4rem; letter-spacing: 1px; }
+.main-nav { display: flex; justify-content: space-between; align-items: center; background-color: #3A7D44; padding: 0.75rem 1.5rem; color: white; position: relative; z-index: 1000; border-radius: 0 0 10px 10px; }
+.nav-brand { font-weight: bold; font-size: 1.4rem; }
 .nav-menu { display: flex; list-style: none; gap: 1rem; }
-.nav-menu li a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 0.75rem;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
+.nav-menu li a { color: white; text-decoration: none; padding: 0.5rem 0.75rem; border-radius: 5px; transition: background 0.3s; }
 .nav-menu li a:hover, .nav-menu li a:focus { background-color: #2E5F35; }
 
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.5rem; }
@@ -71,44 +28,37 @@ main a:hover, main a:focus { text-decoration: underline; }
 .nav-toggle.active span:nth-child(2) { opacity: 0; }
 .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
+.theme-toggle { display: flex; gap: 0.5rem; margin: 0.5rem 1.5rem; align-items: center; }
+.theme-toggle button { padding: 0.3rem 0.75rem; border: none; border-radius: 4px; cursor: pointer; background-color: #3A7D44; color: white; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; transition: background 0.3s; font-size: 0.9rem; }
+.theme-toggle button:hover { background-color: #2E5F35; }
+
+h1 { text-align: center; margin-bottom: 1.5rem; color: #2F4F4F; transition: color 0.3s; }
+body.dark-mode h1 { color: #a8d5a3; }
+h2 { color: #3A7D44; margin-bottom: 0.5rem; transition: color 0.3s; }
+body.dark-mode h2 { color: #a8d5a3; }
+
+section { background-color: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+body.dark-mode section { background-color: #2b2b2b; border-color: #555; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+section:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+body.dark-mode section:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.6); }
+section p strong { color: #a8d5a3; }
+
+.btn { display: inline-block; padding: 0.7rem 1.5rem; border-radius: 8px; margin-top: 1rem; font-weight: 500; transition: background 0.3s, transform 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.1); text-decoration: none; }
+.reflection-btn { background-color: #ff69b4; color: white; }
+.reflection-btn:hover, .reflection-btn:focus { background-color: #e0559e; transform: translateY(-2px); }
+
 @media (max-width: 768px) {
-  .nav-menu {
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background-color: #3A7D44;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-  }
-  .nav-menu.show { max-height: 700px; opacity: 1; }
+  .nav-menu { flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background-color: #3A7D44; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; }
+  .nav-menu.show { max-height: 500px; opacity: 1; }
   .nav-toggle { display: flex; }
 }
-
-/* Event Cards */
-section {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-section:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-section p strong { color: #2E5F35; }
 </style>
 </head>
 <body>
 <div class="grid-container">
   <nav class="main-nav" role="navigation" aria-label="Main site navigation">
     <div class="nav-brand">Inclusive Acres Hub</div>
-    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="nav-menu">
       <li><a href="wa5_home.html">Home</a></li>
       <li><a href="wa5_resources.html">Resources</a></li>
@@ -116,6 +66,12 @@ section p strong { color: #2E5F35; }
       <li><a href="wa5_contact.html">Contact</a></li>
     </ul>
   </nav>
+
+  <div class="theme-toggle" role="region" aria-label="Theme toggle buttons">
+    <button onclick="setLightMode()">🌞 Light Mode</button>
+    <button onclick="setDarkMode()">🌙 Dark Mode</button>
+    <button onclick="clearData()">🗑️ Clear My Data</button>
+  </div>
 
   <main role="main">
     <h1>Upcoming Events</h1>
@@ -143,23 +99,45 @@ section p strong { color: #2E5F35; }
   </main>
 
   <footer role="contentinfo">
-    <a href="Week_6_Reflection.pdf" target="_blank" class="btn">Community Impact Documentation    </a>
+    <a href="Wa7_Data_Integration_Reflection.pdf" target="_blank" class="btn reflection-btn">REFLECTION</a>
+    <p><strong>Privacy Statement:</strong> We collect only minimal data (theme preference) to improve your browsing experience. Data is stored in your browser's localStorage for 7 days and can be cleared anytime with the "Clear My Data" button. No information is sent to external servers. You are always in control of your data.</p>
   </footer>
 </div>
 
 <script>
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
-function toggleMenu() {
+
+navToggle.addEventListener('click', () => {
   navMenu.classList.toggle('show');
   navToggle.classList.toggle('active');
-  const expanded = navToggle.getAttribute('aria-expanded')==='true';
-  navToggle.setAttribute('aria-expanded', !expanded);
+  navToggle.setAttribute('aria-expanded', navToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+});
+
+function setLightMode() {
+  document.body.classList.remove('dark-mode');
+  localStorage.setItem('theme', 'light');
+  localStorage.setItem('expiry', Date.now() + 7*24*60*60*1000);
 }
-navToggle.addEventListener('click', toggleMenu);
-navToggle.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleMenu(); } });
-document.addEventListener('click', e => { if(!navMenu.contains(e.target)&&!navToggle.contains(e.target)&&navMenu.classList.contains('show')){
-  navMenu.classList.remove('show'); navToggle.classList.remove('active'); navToggle.setAttribute('aria-expanded','false');}});
+
+function setDarkMode() {
+  document.body.classList.add('dark-mode');
+  localStorage.setItem('theme', 'dark');
+  localStorage.setItem('expiry', Date.now() + 7*24*60*60*1000);
+}
+
+function clearData() {
+  localStorage.clear();
+  document.body.classList.remove('dark-mode');
+  alert("Your data has been cleared.");
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  const expiry = localStorage.getItem('expiry');
+  if (expiry && Date.now() > parseInt(expiry)) { localStorage.clear(); }
+  else if (savedTheme === 'dark') { document.body.classList.add('dark-mode'); }
+});
 </script>
 </body>
 </html>

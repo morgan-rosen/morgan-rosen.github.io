@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Resources - Inclusive Acres Hub</title>
 <style>
-/* Reset and Base */
+/* Reset & Base */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
 a { color: inherit; text-decoration: none; }
 
 /* Grid Layout */
-.grid-container { display: grid; grid-template-areas: "nav" "main" "footer"; grid-template-rows: auto 1fr auto; min-height: 100vh; }
+.grid-container { 
+  display: grid;
+  grid-template-areas: "nav" "toggle" "main" "footer";
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+}
 
-/* Navigation - same as Home page */
+/* Navigation */
 nav { grid-area: nav; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 .main-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #3A7D44;
-  padding: 0 1.5rem;
-  color: white;
-  position: relative;
-  z-index: 1000;
-  border-radius: 0 0 10px 10px;
-  min-height: 70px;
-  height: 70px;
+  display: flex; justify-content: space-between; align-items: center;
+  background-color: #3A7D44; padding: 0 1.5rem; color: white;
+  position: relative; z-index: 1000; border-radius: 0 0 10px 10px; min-height: 70px;
 }
 .nav-brand { font-weight: bold; font-size: 1.4rem; line-height: 70px; }
 .nav-menu { display: flex; list-style: none; gap: 1rem; height: 100%; align-items: center; }
@@ -38,44 +41,89 @@ nav { grid-area: nav; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 .nav-toggle.active span:nth-child(2) { opacity: 0; }
 .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
+/* Responsive Nav */
 @media (max-width:768px) {
   .nav-menu {
-    flex-direction: column;
-    position:absolute;
-    top:70px; /* match fixed header height */
-    left:0;
-    right:0;
-    background-color:#3A7D44;
-    max-height:0;
-    opacity:0;
-    overflow:hidden;
+    flex-direction: column; position:absolute; top:70px; left:0; right:0;
+    background-color:#3A7D44; max-height:0; opacity:0; overflow:hidden;
     transition:max-height 0.3s ease, opacity 0.3s ease;
   }
   .nav-menu.show { max-height:500px; opacity:1; }
   .nav-toggle { display:flex; }
 }
 
-/* Main content */
-main { grid-area: main; padding: 3rem 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
-main h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #2F4F4F; }
+/* Theme Toggle */
+.theme-toggle {
+  grid-area: toggle; display: flex; justify-content: flex-start; gap: 1rem; padding: 0.5rem 1.5rem;
+}
+.theme-toggle button {
+  background-color: #3A7D44; border: none; color: white; padding: 0.4rem 0.9rem; border-radius: 6px;
+  cursor: pointer; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; transition: background-color 0.3s;
+}
+.theme-toggle button:hover, .theme-toggle button:focus { background-color: #2E5F35; }
+
+/* Main Content */
+main {
+  grid-area: main; padding: 3rem 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+main h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #2F4F4F; transition: color 0.3s; }
+body.dark-mode main h1 { color: #a8d5a3; }
+
+/* Filter Section */
 .filter-section { margin-bottom: 1rem; }
 label { font-weight:bold; }
 select { margin-left:0.5rem; padding:0.3rem; }
+
+/* Resource Grid */
 .resource-grid { display: grid; gap: 2rem; margin-top: 1rem; grid-template-columns: 1fr; }
-.resource-section { background:#f9f9f9; padding:1rem; border-radius:6px; }
+.resource-section { background:#f9f9f9; padding:1rem; border-radius:6px; transition: background-color 0.3s, color 0.3s; }
 @media (min-width:768px) { .resource-grid { grid-template-columns: repeat(2,1fr); } }
 
 /* Buttons */
-.btn { display:inline-block; padding:0.7rem 1.5rem; background-color:#3A7D44; color:white; border-radius:8px; margin-top:1rem; font-weight:500; transition: background 0.3s, transform 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+.btn {
+  display:inline-block; padding:0.7rem 1.5rem; background-color:#3A7D44; color:white; border-radius:8px; margin-top:1rem; font-weight:500;
+  transition: background 0.3s, transform 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
 .btn:hover, .btn:focus { background-color:#2E5F35; transform: translateY(-2px); }
 
+/* Reflection Button */
+.reflection-btn {
+  background-color: #ff69b4 !important;
+  color: white !important;
+}
+.reflection-btn:hover, .reflection-btn:focus {
+  background-color: #e0559e !important;
+  transform: translateY(-2px);
+}
+
 /* Footer */
-footer { grid-area: footer; text-align: center; padding: 2rem; background-color: #e8f5e9; border-top: 1px solid #ccc; }
-footer .btn { box-shadow: none; }
+footer { grid-area: footer; text-align: center; padding: 2rem; background-color: #f2f2f2; transition: background-color 0.3s; }
+footer p { margin-top: 1rem; font-size: 0.9rem; }
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #1f1f1f; color: #eee;
+}
+body.dark-mode nav.main-nav { background-color: #2b2b2b !important; }
+body.dark-mode .nav-menu li a { color: #a8d5a3; }
+body.dark-mode .nav-menu li a:hover, body.dark-mode .nav-menu li a:focus { background-color: #3A7D44; }
+body.dark-mode .nav-brand { color: #a8d5a3; }
+body.dark-mode .resource-section { background-color: #2b2b2b; color: #ccc; }
+body.dark-mode footer { background-color: #222; border-top: 1px solid #555; }
+body.dark-mode .btn { background-color: #3A7D44; color: white; }
+body.dark-mode .btn:hover, body.dark-mode .btn:focus { background-color: #2E5F35; }
+body.dark-mode .reflection-btn {
+  background-color: #ff69b4 !important;
+  color: white !important;
+}
+body.dark-mode .reflection-btn:hover, body.dark-mode .reflection-btn:focus {
+  background-color: #e0559e !important;
+}
 </style>
 </head>
 <body>
 <div class="grid-container">
+
 <nav class="main-nav" role="navigation" aria-label="Main site navigation">
   <div class="nav-brand">Inclusive Acres Hub</div>
   <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -89,6 +137,12 @@ footer .btn { box-shadow: none; }
   </ul>
 </nav>
 
+<div class="theme-toggle" role="region" aria-label="Theme toggle buttons">
+  <button onclick="setLightMode()" aria-label="Switch to light mode">🌞 Light</button>
+  <button onclick="setDarkMode()" aria-label="Switch to dark mode">🌙 Dark</button>
+  <button onclick="clearData()" aria-label="Clear all saved preferences">🗑️ Clear My Data</button>
+</div>
+
 <main>
   <h1>Resources for Families & Volunteers</h1>
   <div class="filter-section" aria-label="Filter resources by category">
@@ -101,6 +155,7 @@ footer .btn { box-shadow: none; }
       <option value="portal">Portal</option>
     </select>
   </div>
+
   <div class="resource-grid">
     <section class="resource-section" data-category="events">
       <h2>Event Calendars & Sign-Ups</h2>
@@ -119,26 +174,64 @@ footer .btn { box-shadow: none; }
       <p>Track activities, manage volunteer shifts, and communicate with staff through our portal.</p>
     </section>
   </div>
+
   <a href="wa5_events.html" class="btn">View Upcoming Events</a>
 </main>
 
 <footer>
-  <a href="Week_6_Reflection.pdf" target="_blank" class="btn">Community Impact Documentation</a>
+  <a href="Wa7_Data_Integration_Reflection.pdf" target="_blank" class="btn reflection-btn">REFLECTION</a>
+  <p><strong>Privacy Statement:</strong> We collect only minimal data (theme preference) to improve your browsing experience. Data is stored in your browser's localStorage for 7 days and can be cleared anytime with the "Clear My Data" button. No information is sent to external servers. You are always in control of your data.</p>
 </footer>
 </div>
 
 <script>
-// Navigation toggle
+// NAV TOGGLE
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
-navToggle.addEventListener('click', ()=>{navMenu.classList.toggle('show'); navToggle.classList.toggle('active'); const expanded = navToggle.getAttribute('aria-expanded')==='true'; navToggle.setAttribute('aria-expanded',!expanded);});
-navToggle.addEventListener('keydown', e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault(); navMenu.classList.toggle('show'); navToggle.classList.toggle('active'); const expanded = navToggle.getAttribute('aria-expanded')==='true'; navToggle.setAttribute('aria-expanded',!expanded);}});
-document.addEventListener('click', e=>{if(!navMenu.contains(e.target)&&!navToggle.contains(e.target)&&navMenu.classList.contains('show')){navMenu.classList.remove('show'); navToggle.classList.remove('active'); navToggle.setAttribute('aria-expanded','false');}});
+navToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('show');
+  navToggle.classList.toggle('active');
+  const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', !expanded);
+});
 
-// Resource filter
-const filterSelect=document.getElementById('resourceFilter');
-const sections=document.querySelectorAll('.resource-section');
-filterSelect.addEventListener('change',()=>{const value=filterSelect.value; sections.forEach(section=>{const category=section.getAttribute('data-category'); section.style.display=(value==='all'||value===category)?'':'none';});});
+// RESOURCE FILTER
+const filterSelect = document.getElementById('resourceFilter');
+const sections = document.querySelectorAll('.resource-section');
+filterSelect.addEventListener('change', () => {
+  const value = filterSelect.value;
+  sections.forEach(section => {
+    section.style.display = (value === 'all' || section.dataset.category === value) ? '' : 'none';
+  });
+});
+
+// THEME PERSISTENCE WITH EXPIRATION
+function setLightMode() {
+  document.body.classList.remove('dark-mode');
+  localStorage.setItem('theme', 'light');
+  localStorage.setItem('themeExpiry', Date.now() + 7*24*60*60*1000);
+}
+function setDarkMode() {
+  document.body.classList.add('dark-mode');
+  localStorage.setItem('theme', 'dark');
+  localStorage.setItem('themeExpiry', Date.now() + 7*24*60*60*1000);
+}
+function clearData() {
+  localStorage.clear();
+  document.body.classList.remove('dark-mode');
+  alert("Your data has been cleared.");
+}
+
+// Initialize theme on load
+(function() {
+  const savedTheme = localStorage.getItem('theme');
+  const expiry = localStorage.getItem('themeExpiry');
+  if (expiry && Date.now() > parseInt(expiry)) {
+    clearData();
+  } else if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+  }
+})();
 </script>
 </body>
 </html>
