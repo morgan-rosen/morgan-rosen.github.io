@@ -1,9 +1,7 @@
-/* Reset and Base */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+ { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; }
 a { color: inherit; text-decoration: none; }
 
-/* Grid Layout */
 .grid-container { 
   display: grid; 
   grid-template-areas: "nav" "main" "footer"; 
@@ -11,7 +9,6 @@ a { color: inherit; text-decoration: none; }
   min-height: 100vh; 
 }
 
-/* Navigation */
 nav { grid-area: nav; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 .main-nav { 
   display: flex; justify-content: space-between; align-items: center; 
@@ -32,7 +29,6 @@ nav { grid-area: nav; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 }
 .nav-menu li a:hover, .nav-menu li a:focus { background-color: #2E5F35; }
 
-/* Mobile nav toggle */
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.5rem; }
 .nav-toggle span { display: block; width: 25px; height: 3px; background-color: white; transition: 0.3s; }
 .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -51,12 +47,10 @@ nav { grid-area: nav; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
   .nav-toggle { display: flex; }
 }
 
-/* Main Content */
 main { grid-area: main; padding: 3rem 1.5rem; text-align: center; }
 main h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #2F4F4F; }
 main p { max-width: 700px; margin: 0 auto 1.5rem; font-size: 1.1rem; line-height: 1.8; }
 
-/* Buttons */
 .btn { 
   display: inline-block; 
   padding: 0.7rem 1.5rem; 
@@ -70,6 +64,5 @@ main p { max-width: 700px; margin: 0 auto 1.5rem; font-size: 1.1rem; line-height
 }
 .btn:hover, .btn:focus { background-color: #2E5F35; transform: translateY(-2px); }
 
-/* Footer */
 footer { grid-area: footer; text-align: center; padding: 2rem; background-color: #e8f5e9; border-top: 1px solid #ccc; }
 footer .btn { box-shadow: none; }
