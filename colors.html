@@ -6,19 +6,15 @@
   <title>Design System</title>
 
   <style>
-    /*  DESIGN  */
     :root {
-      /* Color Palette */
       --outer-space: #484a47;
       --paynes-gray: #5c6d70;
       --old-rose: #a37774;
       --salmon: #e88873;
       --melon: #e0ac9d;
 
-      /* Font */
       --font-family: "savate", sans-serif;
 
-      /* Spacing */
       --space-1: 24px;
       --space-2: 48px;
       --space-3: 72px;
@@ -59,7 +55,6 @@
     h2 { font-size: 1.5rem; color: var(--old-rose); }
     h3 { font-size: 1.25rem; color: var(--paynes-gray); }
 
-    /* COLOR PALETTE (Swatches) */
     .swatches {
       display: flex;
       flex-wrap: wrap;
@@ -82,7 +77,6 @@
     }
     .swatch.light { color: var(--outer-space); }
 
-    /* SPACING SYSTEM */
     .spacing-demo {
       display: flex;
       gap: 16px;
@@ -107,7 +101,6 @@
     .s4 { background: var(--outer-space); width: var(--space-4); height: var(--space-4); }
     .s5 { background: var(--melon);       width: var(--space-5); height: var(--space-5); color: var(--outer-space); }
 
-    /* COMPONENTS (Example Buttons / Forms) */
     .btn {
       display: inline-block;
       padding: 10px 16px;
@@ -130,7 +123,6 @@
       font-family: var(--font-family);
     }
 
-    /* RESPONE LAYOUT */
     @media (max-width: 600px) {
       .swatches { flex-direction: column; }
       .spacing-demo { flex-direction: column; }
@@ -139,13 +131,11 @@
 </head>
 
 <body>
-  <!-- HEADER -->
   <header>
     <h1>My Design System</h1>
   </header>
 
   <main>
-    <!-- COLOR PALETTE -->
     <section>
       <h2>Color Palette</h2>
       <div class="swatches">
@@ -157,7 +147,6 @@
       </div>
     </section>
 
-    <!-- TYPOGRAPHY -->
     <section>
       <h2>Typography</h2>
       <h1>Heading 1 Example</h1>
@@ -167,7 +156,6 @@
       <small>Small text example — captions or helper text.</small>
     </section>
 
-    <!-- SPACING -->
     <section>
       <h2>Spacing System</h2>
       <div class="spacing-demo">
@@ -179,7 +167,6 @@
       </div>
     </section>
 
-    <!-- COMPONENTS -->
     <section>
       <h2>Components</h2>
       <button class="btn btn-primary">Example Button</button>
@@ -195,7 +182,6 @@
       </form>
     </section>
 
-    <!-- REFLECTION -->
     <section>
       <h2>Reflection</h2>
       <p>
