@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home - Inclusive Acres Hub</title>
   <style>
-    /* Reset & Base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,7 +15,6 @@
     }
     a { color: inherit; text-decoration: none; }
 
-    /* Grid Layout */
     .grid-container {
       display: grid;
       grid-template-areas: "nav" "toggle" "main" "footer";
@@ -24,7 +22,6 @@
       min-height: 100vh;
     }
 
-    /* Navigation */
     nav { grid-area: nav; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     .main-nav {
       display: flex; justify-content: space-between; align-items: center;
@@ -71,7 +68,6 @@
     .nav-toggle.active span:nth-child(2) { opacity: 0; }
     .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-    /* Theme toggle buttons */
     .theme-toggle {
       display: flex;
       gap: 0.5rem;
@@ -94,7 +90,6 @@
     }
     .theme-toggle button:hover { background-color: #2E5F35; }
 
-    /* Main content */
     main {
       grid-area: main;
       padding: 3rem 1.5rem;
@@ -160,7 +155,6 @@
       transform: translateY(-2px);
     }
 
-    /* Footer */
     footer {
       grid-area: footer;
       text-align: center;
@@ -170,7 +164,6 @@
     }
     footer p { margin-top: 1rem; font-size: 0.9rem; }
 
-    /* Dark mode */
     body.dark-mode {
       background-color: #1f1f1f;
       color: #eee;
@@ -181,7 +174,6 @@
     body.dark-mode main h1 { color: #a8d5a3; }
     body.dark-mode .nav-brand { color: #a8d5a3; }
 
-    /* Ensure reflection button stays pink in dark mode */
     body.dark-mode .reflection-btn {
       background-color: #ff69b4 !important;
       color: white !important;
@@ -191,7 +183,6 @@
       background-color: #e0559e !important;
     }
 
-    /* Responsive breakpoints */
     @media (max-width: 768px) {
       .nav-menu {
         flex-direction: column;
@@ -217,7 +208,6 @@
       main ul { max-width: none; }
     }
 
-    /* Container query */
     @container (min-width: 400px) {
       .btn { font-size: 1.1rem; padding: 1rem 2rem; }
     }
