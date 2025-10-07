@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home - Inclusive Acres Hub</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+     { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
@@ -131,7 +131,6 @@
       font-weight: bold;
     }
 
-    /* Buttons */
     .btn {
       display: inline-block;
       padding: 0.7rem 1.5rem;
@@ -145,7 +144,6 @@
     }
     .btn:hover, .btn:focus { background-color: #2E5F35; transform: translateY(-2px); }
 
-    /* Reflection button */
     .reflection-btn {
       background-color: #ff69b4 !important;
       color: white !important;
@@ -266,7 +264,6 @@
       navToggle.setAttribute('aria-expanded', !expanded);
     });
 
-    // Theme persistence with expiration
     document.addEventListener('DOMContentLoaded', () => {
       const savedTheme = localStorage.getItem('theme');
       const expiry = localStorage.getItem('expiry');
