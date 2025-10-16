@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Resources - Inclusive Acres Hub</title>
 <style>
-/* Reset & Base */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+ { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
@@ -16,7 +15,6 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 
-/* Grid Layout */
 .grid-container { 
   display: grid;
   grid-template-areas: "nav" "toggle" "main" "footer";
@@ -24,7 +22,6 @@ a { color: inherit; text-decoration: none; }
   min-height: 100vh;
 }
 
-/* Navigation */
 nav { grid-area: nav; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 .main-nav {
   display: flex; justify-content: space-between; align-items: center;
@@ -41,7 +38,6 @@ nav { grid-area: nav; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 .nav-toggle.active span:nth-child(2) { opacity: 0; }
 .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
-/* Responsive Nav */
 @media (max-width:768px) {
   .nav-menu {
     flex-direction: column; position:absolute; top:70px; left:0; right:0;
@@ -52,7 +48,6 @@ nav { grid-area: nav; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
   .nav-toggle { display:flex; }
 }
 
-/* Theme Toggle */
 .theme-toggle {
   grid-area: toggle; display: flex; justify-content: flex-start; gap: 1rem; padding: 0.5rem 1.5rem;
 }
@@ -62,31 +57,26 @@ nav { grid-area: nav; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 }
 .theme-toggle button:hover, .theme-toggle button:focus { background-color: #2E5F35; }
 
-/* Main Content */
 main {
   grid-area: main; padding: 3rem 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center;
 }
 main h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #2F4F4F; transition: color 0.3s; }
 body.dark-mode main h1 { color: #a8d5a3; }
 
-/* Filter Section */
 .filter-section { margin-bottom: 1rem; }
 label { font-weight:bold; }
 select { margin-left:0.5rem; padding:0.3rem; }
 
-/* Resource Grid */
 .resource-grid { display: grid; gap: 2rem; margin-top: 1rem; grid-template-columns: 1fr; }
 .resource-section { background:#f9f9f9; padding:1rem; border-radius:6px; transition: background-color 0.3s, color 0.3s; }
 @media (min-width:768px) { .resource-grid { grid-template-columns: repeat(2,1fr); } }
 
-/* Buttons */
 .btn {
   display:inline-block; padding:0.7rem 1.5rem; background-color:#3A7D44; color:white; border-radius:8px; margin-top:1rem; font-weight:500;
   transition: background 0.3s, transform 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 .btn:hover, .btn:focus { background-color:#2E5F35; transform: translateY(-2px); }
 
-/* Reflection Button */
 .reflection-btn {
   background-color: #ff69b4 !important;
   color: white !important;
@@ -96,11 +86,9 @@ select { margin-left:0.5rem; padding:0.3rem; }
   transform: translateY(-2px);
 }
 
-/* Footer */
 footer { grid-area: footer; text-align: center; padding: 2rem; background-color: #f2f2f2; transition: background-color 0.3s; }
 footer p { margin-top: 1rem; font-size: 0.9rem; }
 
-/* Dark Mode */
 body.dark-mode {
   background-color: #1f1f1f; color: #eee;
 }
@@ -185,7 +173,6 @@ body.dark-mode .reflection-btn:hover, body.dark-mode .reflection-btn:focus {
 </div>
 
 <script>
-// NAV TOGGLE
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 navToggle.addEventListener('click', () => {
@@ -195,7 +182,6 @@ navToggle.addEventListener('click', () => {
   navToggle.setAttribute('aria-expanded', !expanded);
 });
 
-// RESOURCE FILTER
 const filterSelect = document.getElementById('resourceFilter');
 const sections = document.querySelectorAll('.resource-section');
 filterSelect.addEventListener('change', () => {
@@ -205,7 +191,6 @@ filterSelect.addEventListener('change', () => {
   });
 });
 
-// THEME PERSISTENCE WITH EXPIRATION
 function setLightMode() {
   document.body.classList.remove('dark-mode');
   localStorage.setItem('theme', 'light');
@@ -222,7 +207,6 @@ function clearData() {
   alert("Your data has been cleared.");
 }
 
-// Initialize theme on load
 (function() {
   const savedTheme = localStorage.getItem('theme');
   const expiry = localStorage.getItem('themeExpiry');

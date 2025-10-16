@@ -1,4 +1,3 @@
-// NAVIGATION TOGGLE
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -27,7 +26,6 @@ if (navToggle) {
   });
 }
 
-// RESOURCE FILTER (only on resources page)
 const filterSelect = document.getElementById('resourceFilter');
 if (filterSelect) {
   const sections = document.querySelectorAll('.resource-section');
@@ -40,7 +38,6 @@ if (filterSelect) {
   });
 }
 
-// CONTACT FORM (only on contact page)
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', function (event) {

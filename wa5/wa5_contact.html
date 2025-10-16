@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Contact - Inclusive Acres Hub</title>
 <style>
-/* Reset & Base */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #fafafa; color: #333; transition: background-color 0.3s, color 0.3s; }
 
 body.dark-mode { background-color: #1f1f1f; color: #eee; }
@@ -24,19 +23,16 @@ body.dark-mode footer { background-color: #222; border-top: 1px solid #555; }
 body.dark-mode .btn { color: white; }
 body.dark-mode .btn:hover { transform: translateY(-2px); }
 
-/* Grid Layout */
 .grid-container { display: grid; grid-template-areas: "nav" "toggle" "main" "footer"; grid-template-columns: 1fr; grid-template-rows: auto auto 1fr auto; min-height: 100vh; }
 nav { grid-area: nav; }
 main { grid-area: main; padding: 3rem 1.5rem; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
 footer { grid-area: footer; text-align: center; padding: 2rem; background-color: #f2f2f2; transition: background-color 0.3s; }
 
-/* Headings */
 h1 { color: #2E5F35; margin-bottom: 1rem; text-align: center; transition: color 0.3s; }
 body.dark-mode h1 { color: #a8d5a3; }
 h2 { color: #3A7D44; margin-top: 2rem; transition: color 0.3s; }
 body.dark-mode h2 { color: #a8d5a3; }
 
-/* Navigation */
 .main-nav { display: flex; justify-content: space-between; align-items: center; background-color: #3A7D44; padding: 0.75rem 1.5rem; color: white; position: relative; z-index: 1000; border-radius: 0 0 10px 10px; }
 .nav-brand { font-weight: bold; font-size: 1.4rem; }
 .nav-menu { display: flex; list-style: none; gap: 1rem; }
@@ -54,18 +50,15 @@ body.dark-mode h2 { color: #a8d5a3; }
   .nav-toggle { display:flex; }
 }
 
-/* Links & Buttons */
 main a { color: #007BFF; text-decoration: underline; transition: color 0.3s; }
 main a:hover, main a:focus { text-decoration: underline; }
 
 .btn { display: inline-block; padding: 0.7rem 1.5rem; background-color: #3A7D44; color: white; text-decoration: none; border-radius: 8px; margin-top: 1rem; font-weight: 500; transition: background 0.3s, transform 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
 .btn:hover, .btn:focus { background-color: #2E5F35; transform: translateY(-2px); }
 
-/* Pink Reflection Button */
 .reflection-btn { background-color: #ff69b4 !important; color: white !important; }
 .reflection-btn:hover, .reflection-btn:focus { background-color: #e0559e !important; transform: translateY(-2px); }
 
-/* Form */
 form { margin-top: 2rem; padding: 1.5rem; background-color: #fff; border: 1px solid #ddd; border-radius: 8px; transition: background-color 0.3s, border-color 0.3s; width: 100%; max-width: 600px; }
 form label { display: block; margin-top: 1rem; font-weight: bold; }
 form input, form textarea { width: 100%; padding: 0.5rem; margin-top: 0.25rem; border: 1px solid #ccc; border-radius: 4px; transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
@@ -73,7 +66,6 @@ form button { margin-top: 1rem; background-color: #3A7D44; color: white; border:
 form button:hover, form button:focus { background-color: #2E5F35; transform: translateY(-2px); }
 #successMsg { margin-top: 1rem; color: green; font-weight: bold; }
 
-/* Theme Toggle */
 .theme-toggle { grid-area: toggle; display: flex; justify-content: flex-start; gap: 1rem; padding: 0.5rem 1.5rem; }
 .theme-toggle button { background-color: #3A7D44; border: none; color: white; padding: 0.4rem 0.9rem; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; transition: background-color 0.3s; }
 .theme-toggle button:hover, .theme-toggle button:focus { background-color: #2E5F35; }
@@ -126,7 +118,6 @@ form button:hover, form button:focus { background-color: #2E5F35; transform: tra
 </div>
 
 <script>
-// NAV TOGGLE
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 function toggleMenu() { 
@@ -138,14 +129,12 @@ navToggle.addEventListener('click', toggleMenu);
 navToggle.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') { e.preventDefault(); toggleMenu(); } });
 document.addEventListener('click', e => { if(!navMenu.contains(e.target)&&!navToggle.contains(e.target)&&navMenu.classList.contains('show')){ navMenu.classList.remove('show'); navToggle.classList.remove('active'); navToggle.setAttribute('aria-expanded','false'); } });
 
-// FORM SUBMISSION
 document.getElementById("contactForm").addEventListener("submit", function(event){
   event.preventDefault();
   document.getElementById("successMsg").textContent = "✅ Thank you! Your message has been sent successfully.";
   this.reset();
 });
 
-// THEME PERSISTENCE
 function setLightMode() {
   document.body.classList.remove('dark-mode');
   localStorage.setItem('theme','light');
