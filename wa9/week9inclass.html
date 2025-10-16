@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <h1>Week 9: In Class Component</h1>
+  <style>
+  
+    .moving-box {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: red;
+      animation: moving-box 5s infinite alternate;
+    }
+
+    @keyframes moving-box {
+      0% {
+        left: 0;
+        top: 0;
+        background-color: red;
+      }
+      25% {
+        left: 500px;
+        top: 0;
+        background-color: orange;
+      }
+      50% {
+        left: 500px;
+        top: 300px;
+        background-color: yellow;
+      }
+      75% {
+        left: 0;
+        top: 300px;
+        background-color: green;
+      }
+      100% {
+        left: 0;
+        top: 0;
+        background-color: blue;
+      }
+    }
+  </style>
+</head>
+<body>
+   <h2><a href="week9.html">Go to Micro-interaction</a></h2>
+   <h3><a href="Wa9.pdf">Go to Bias Analysis and Reflection</a></h3>
+
+  <div class="moving-box"></div>
+</body>
+</html>

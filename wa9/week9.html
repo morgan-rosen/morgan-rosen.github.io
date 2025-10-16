@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success Feedback</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .success-button {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .success-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .success-message {
+      opacity: 0;
+      margin-top: 20px;
+      font-size: 24px;
+      color: #4CAF50;
+      transform: scale(0.5);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .success-message.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ffcb05;
+      top: 50%;
+      left: 50%;
+      opacity: 0;
+      animation: confetti-fall 1s forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+      100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .success-button, .success-message, .confetti {
+        transition: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+<h3><a href="Wa9.pdf">Go to Bias Analysis and Reflection</a></h3>
+  <button class="success-button">Complete Task</button>
+  <div class="success-message">Success! 🎉</div>
+
+  <script>
+    const button = document.querySelector('.success-button');
+    const message = document.querySelector('.success-message');
+
+    button.addEventListener('click', () => {
+      message.classList.add('show');
+
+      for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        const x = (Math.random() - 0.5) * 400 + 'px';
+        const y = Math.random() * -300 + 'px';
+        confetti.style.setProperty('--x', x);
+        confetti.style.setProperty('--y', y);
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        document.body.appendChild(confetti);
+        confetti.addEventListener('animationend', () => confetti.remove());
+      }
+    });
+  </script>
+</body>
+</html>
