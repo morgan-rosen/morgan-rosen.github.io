@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Search App</title>
+  <link rel="stylesheet" href="wa12.css">
+</head>
+<body>
+
+  <header>
+    <h1>Movie Search (OMDB)</h1>
+    <p>Search movies and save favorites locally. Data stays on your device.</p>
+  </header>
+
+  <form id="searchForm">
+    <label for="searchInput">Search for a movie:</label>
+    <input id="searchInput" name="searchInput" placeholder="e.g. Barbie" aria-label="Movie search field">
+    <button id="searchBtn" type="submit">Search</button>
+  </form>
+
+  <p id="message" role="status" aria-live="polite"></p>
+
+  <main>
+    <section aria-labelledby="results-heading">
+      <h2 id="results-heading">Results</h2>
+      <div id="results"></div>
+    </section>
+
+    <section aria-labelledby="favorites-heading">
+      <h2 id="favorites-heading">Favorites</h2>
+      <button id="exportBtn">Export Favorites</button>
+      <button id="clearBtn">Clear Favorites</button>
+      <div id="favorites"></div>
+    </section>
+  </main>
+
+  <p class="small">
+    This app only sends your search term to the OMDB API.  
+    Your favorites are stored locally in your browser.
+  </p>
+
+  <footer>
+    <p><a href="wa12_reflection.pdf" target="_blank" aria-label="View Reflection Document (opens in new tab)">View Reflection Document</a></p>
+  </footer>
+
+  <script src="wa12.js"></script>
+</body>
+</html>
