@@ -1,0 +1,167 @@
+:root {
+  --cerulean: #054a60;
+  --blue-green: #0785a1;
+  --jonquil: #f5cd06;
+  --papaya-whip: #fff1d0;
+  --rojo: #dd1c1a;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--papaya-whip);
+  color: var(--cerulean);
+  margin: 0;
+  padding: 20px;
+  max-width: 900px;
+  margin-inline: auto;
+  line-height: 1.5;
+}
+
+header {
+  text-align: center;
+  background: linear-gradient(90deg, var(--cerulean), var(--blue-green));
+  color: var(--papaya-whip);
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  color: var(--papaya-whip);
+  margin: 0;
+  font-size: 2.2em;
+}
+
+header p {
+  margin: 8px 0 0 0;
+  font-size: 1em;
+}
+
+h2 {
+  color: var(--blue-green);
+  border-bottom: 3px solid var(--jonquil);
+  padding-bottom: 4px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  padding: 10px;
+  border: 2px solid var(--blue-green);
+  border-radius: 5px;
+  width: 250px;
+}
+
+input:focus {
+  outline: 3px solid var(--jonquil);
+}
+
+button {
+  background-color: var(--cerulean);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover,
+button:focus {
+  background-color: var(--blue-green);
+  transform: scale(1.05);
+  outline: 3px solid var(--jonquil);
+  outline-offset: 2px;
+}
+
+#results, #favorites {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.movie, .fav {
+  background: white;
+  border: 2px solid var(--blue-green);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.movie:hover, .fav:hover {
+  transform: scale(1.02);
+}
+
+.movie strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--rojo);
+}
+
+.movie button {
+  background-color: var(--jonquil);
+  color: #000;
+}
+
+.movie button:hover {
+  background-color: var(--blue-green);
+  color: #fff;
+}
+
+.fav-controls {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#favorites button {
+  background-color: var(--rojo);
+}
+
+#favorites button:hover {
+  background-color: var(--cerulean);
+}
+
+#message {
+  text-align: center;
+  font-weight: bold;
+  color: var(--rojo);
+  margin-top: 10px;
+}
+
+.small {
+  font-size: 0.85em;
+  text-align: center;
+  color: var(--cerulean);
+  margin-top: 25px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  border-top: 2px solid var(--jonquil);
+  padding-top: 10px;
+}
+
+a {
+  color: var(--blue-green);
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+  color: var(--rojo);
+}
