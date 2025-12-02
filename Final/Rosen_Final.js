@@ -63,7 +63,6 @@ function addFavorite(movie) {
   displayFavorites();
 }
 
-/* ⭐ New: Add tags to favorites */
 function addTagToFavorite(id, tag) {
   let favs = JSON.parse(localStorage.getItem("favorites")) || [];
   const movie = favs.find(f => f.imdbID === id);
